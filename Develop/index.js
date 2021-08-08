@@ -1,9 +1,11 @@
 // TODO: Include packages needed for this application
-//const fs = require('fs');
+const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown.js');
+
+const fileName = "README"
 // TODO: Create an array of questions for user input
-const questions = () => {
-    return inquirer.prompt([
+const questions = [
     {
         type: 'input',
         name: 'title',
@@ -14,6 +16,18 @@ const questions = () => {
             } else {
                 console.log("You can't just not have a title, buddy, please enter a title");
                 return false
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub username?',
+        validate: usernameInput => {
+            if (usernameInput) {
+                return true;
+            } else {
+                console.log("You've got a username, dude, or you wouldn't be making this project. Please enter a valid username");
             }
         }
     },
@@ -44,7 +58,7 @@ const questions = () => {
             if (usageInput) {
                 return true;
             } else {
-                console.log("I promise your project isn't completely useless. You worked very hard on this. Please descript the possible usgae for your project" );
+                console.log("I promise your project isn't completely useless. You worked very hard on this. Please descript the possible usage for your project" );
                 return false;
             }
         }
@@ -62,23 +76,41 @@ const questions = () => {
         default: 'N/A'
     },
     {
-        type: 'select',
+        type: 'list',
         name: 'license',
         message: 'What license is your project using?',
-        choices: ['Apache License 2.0', 'BSD 3-Clause', 'MIT', 'GNU General Public License', 'Mozilla Public License 2.0']
+        choices: ['Apache License 2.0', 'GNU GPLv3', 'GNU AGPLv3', 'MIT', 'Mozilla Public License 2.0']
     },
-]);
-}
+];
 
-questions()
-    .then(function (data) {
-        console.log("success");
-    });
+
+// questions()
+//     .then(function (data) {
+//         const fileName = data.fileName + ".md"
+//         fs.writeFile(fileName, function(err) {
+//             if (err) {
+//                 return console.log(err);
+//             }
+//         });
+//         console.log("success");
+//     });
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => 
+        (err) ? console.error(err) : console.log("success"));
+        console.log("Your README.md file has been successfully generated");
+};
 
 // TODO: Create a function to initialize app
-function init() {}
+const init = async () => {
+    try {
+        const data = await inquirer.prompt(questions); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
+        console.log(data);
+        writeToFile('./dist/README.md', generateMarkdown(data));
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 // Function call to initialize app
 init();
