@@ -11,7 +11,7 @@
 // If there is no license, return an empty string
 // function renderLicenseSection(license) {}
 
-let year = new Date();
+
 
 const generateMarkdown = (data) => {
   switch (data.license) {
@@ -48,25 +48,27 @@ const generateMarkdown = (data) => {
   * [License](#license)
   `
 
+  let year = new Date();
+
   let readMeTemplate = `# ${data.title}\n`;
 
   readMeTemplate += `\n${licenseBadge}\n`
 
-  readMeTemplate += `\n## Description${data.description}\n`
+  readMeTemplate += `\n## Description\n${data.description}\n`
 
   readMeTemplate += tableContents;
 
-  readMeTemplate += `\n## Installation${data.installation}\n`
+  readMeTemplate += `\n## Installation\n${data.installation}\n`
 
-  readMeTemplate += `\n## Usage${data.usage}\n`
+  readMeTemplate += `\n## Usage\n${data.usage}\n`
 
-  readMeTemplate += `\n## Contributing${data.contributing}\n`
+  readMeTemplate += `\n## Contributing\n${data.contributing}\n`
 
-  readMeTemplate += `\n## Testing${data.test}\n`
+  readMeTemplate += `\n## Testing\n${data.test}\n`
 
-  readMeTemplate += `\n## License \nLicensed under the ${data.license} License. Copyright &copy ${year.getFullYear}\n` //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear
+  readMeTemplate += `\n## License \nLicensed under the ${data.license} License. Copyright \u00A9 ${year.getFullYear()}\n` //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear
 
-  readMeTemplate += `\n## Questions\n*Feel free to reach out, find me at* \nGitHub: [@${data.username}](https://github.com/${data.username}/)`
+  readMeTemplate += `\n## Questions\nFeel free to reach out with any questions you have, find me at \nGitHub: [@${data.username}](https://github.com/${data.username}/)`
 
   return readMeTemplate;
   
