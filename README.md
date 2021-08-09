@@ -23,5 +23,6 @@ Upon starting the application, the user sees a number of prompts to determine wh
 
 -----
 
-GitHub: [ewalker518](https://github.com/ewalker518)
+GitHub: [ewalker518](https://github.com/ewalker518/)
+
 Email: [ewalkertbone@gmail.com](mailto:ewalkertbone@gmail.com)
