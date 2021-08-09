@@ -1,10 +1,9 @@
-// TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
-
 const fileName = "README"
-// TODO: Create an array of questions for user input
+
+// Array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -80,25 +79,13 @@ const questions = [
     },
 ];
 
-
-// questions()
-//     .then(function (data) {
-//         const fileName = data.fileName + ".md"
-//         fs.writeFile(fileName, function(err) {
-//             if (err) {
-//                 return console.log(err);
-//             }
-//         });
-//         console.log("success");
-//     });
-// TODO: Create a function to write README file
+// Function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => 
         (err) ? console.error(err) : console.log("Your README.md file has been successfully generated"));
-        // console.log("Your README.md file has been successfully generated");
 };
 
-// TODO: Create a function to initialize app
+// Function to initialize app
 const init = async () => {
     try {
         const data = await inquirer.prompt(questions); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await

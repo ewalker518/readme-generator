@@ -1,19 +1,6 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-// function renderLicenseBadge(license) {}
-// const { table } = require("console");
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-// function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-// function renderLicenseSection(license) {}
-
-
-
+// Function to put together the contents of the README file
 const generateMarkdown = (data) => {
+  // Switch function to display the correct badge based on user input
   switch (data.license) {
     case 'Apache License 2.0':
       licenseBadge = `[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
@@ -38,18 +25,20 @@ const generateMarkdown = (data) => {
     break;
   }
 
+  // Table of Contents structure
   let tableContents = 
   `
   \n## Table of Contents\n
-  * [Installation](#installation)\n
+  * [Installation](#installation)
   * [Usage](#usage)
   * [Contributing](#contributing)
   * [Testing](#test)
   * [License](#license)
   `
-
+  // Current year to be displayed on the page
   let year = new Date();
 
+  // Displaying user data within the structure of the page
   let readMeTemplate = `# ${data.title}\n`;
 
   readMeTemplate += `\n${licenseBadge}\n`
@@ -73,18 +62,5 @@ const generateMarkdown = (data) => {
   return readMeTemplate;
   
 }
-
-// TODO: Create a function to generate markdown for README
-// function generateMarkdown(userData) {
-//   return `
-// # ${data.title} \n
-// ## ${data.description} \n
-// ## ${data.installation} \n
-// ## ${data.usage} \n
-// ## ${data.contributing} \n
-// ## ${data.test} \n
-// ## ${data.license} \n
-// `;
-// }
 
 module.exports = generateMarkdown;
