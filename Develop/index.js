@@ -48,7 +48,6 @@ const questions = [
         type: 'input',
         name: 'installation',
         message: 'What steps are required for installation?',
-        default: 'N/A'
     },
     {
         type: 'input',
@@ -67,13 +66,11 @@ const questions = [
         type: 'input',
         name: 'contributing',
         message: 'If you would like other developers to be able to contribute to your project, please provide some instructions and guidelines for how to do so',
-        default: 'N/A'
     },
     {
         type: 'input',
         name: 'test',
         message: 'Please list any options for testing your project as well as instructions on how to do so',
-        default: 'N/A'
     },
     {
         type: 'list',
@@ -97,15 +94,14 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) => 
-        (err) ? console.error(err) : console.log("success"));
-        console.log("Your README.md file has been successfully generated");
+        (err) ? console.error(err) : console.log("Your README.md file has been successfully generated"));
+        // console.log("Your README.md file has been successfully generated");
 };
 
 // TODO: Create a function to initialize app
 const init = async () => {
     try {
         const data = await inquirer.prompt(questions); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await
-        console.log(data);
         writeToFile('./dist/README.md', generateMarkdown(data));
     } catch (err) {
         console.log(err);
