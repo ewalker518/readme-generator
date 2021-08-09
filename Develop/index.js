@@ -13,7 +13,7 @@ const questions = [
             if (titleInput) {
                 return true;
             } else {
-                console.log("You can't just not have a title, buddy, please enter a title");
+                console.log('Please enter a title for your project');
                 return false
             }
         }
@@ -26,7 +26,7 @@ const questions = [
             if (usernameInput) {
                 return true;
             } else {
-                console.log("You've got a username, dude, or you wouldn't be making this project. Please enter a valid username");
+                console.log('Please enter a valid username');
             }
         }
     },
@@ -38,7 +38,7 @@ const questions = [
             if (descriptionInput) {
                 return true;
             } else {
-                console.log("Your project is not just an empty void. Please enter some kind of description");
+                console.log('Your project is not just an empty void. Please enter your description');
                 return false;
             }
         }
@@ -56,7 +56,7 @@ const questions = [
             if (usageInput) {
                 return true;
             } else {
-                console.log("I promise your project isn't completely useless. You worked very hard on this. Please descript the possible usage for your project" );
+                console.log('Please describe the possible usage for your project');
                 return false;
             }
         }
